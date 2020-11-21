@@ -79,15 +79,14 @@ const jokes = [
 ];
 
 const Joke = (props) => {
-  const [like, setLike] = useState(0);
-  const [dislike, setDislike] = useState(0);
+  const [like, setLike] = useState(props.likes);
+  const [dislike, setDislike] = useState(props.dislikes);
 
   return (
     <div className="joke">
       <div className="joke__body">
-        {props.userID}
         <div className="joke__user">
-          <img className="user-avatar" src="/assets/user01.png" />
+          <img className="user-avatar" src={`/assets/${props.userID}.png`} />
           <p className="user-name">{props.userName}</p>
         </div>
 
@@ -98,9 +97,7 @@ const Joke = (props) => {
           onClick={() => setLike(like + 1)}
           id="btn-up"
           className="btn-like btn-like--up"
-        >
-          {props.likes}
-        </button>
+        ></button>
         <span id="likes-up" className="likes-count likes-count--up">
           {like}
         </span>
@@ -109,9 +106,7 @@ const Joke = (props) => {
           id="btn-down"
           className="btn-like btn-like--down"
           src="/assets/img/like-down.png"
-        >
-          {props.dislikes}
-        </button>
+        ></button>
         <span id="likes-down" className="likes-count likes-count--down">
           {dislike}
         </span>
